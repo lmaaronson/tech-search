@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrency": "^0.1.4",
     "concurrently": "^3.5.1",
     "expres": "^0.0.5",
     "path": "^0.12.7",
