@@ -1,0 +1,19 @@
+{
+  "name": "tech-search",
+  "version": "1.0.0",
+  "description": "Final project for FT-UofMN-BC-Feb-2018",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmaaronson/tech-search.git"
+  },
+  "author": "Joe, Dean, Atharva, Swapna, Michael, Laurie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lmaaronson/tech-search/issues"
+  },
+  "homepage": "https://github.com/lmaaronson/tech-search#readme"
+}
