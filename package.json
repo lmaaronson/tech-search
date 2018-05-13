@@ -16,6 +16,7 @@
     "concurrently": "^3.5.1",
     "express": "^4.16.3",
     "path": "^0.12.7",
-    "sequelize": "^4.37.7"
+    "sequelize": "^4.37.7",
+    "upwork-api": "^1.2.4"
   }
 }
