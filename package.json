@@ -14,9 +14,23 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+<<<<<<< HEAD
+=======
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+>>>>>>> ab8b5886e85696da65dedaf082455a05f5d56c6b
     "concurrently": "^3.5.1",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "nodemon": "^1.17.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "sequelize": "^4.37.7"
+    "sequelize": "^4.37.7",
+    "upwork-api": "^1.2.4"
   }
 }

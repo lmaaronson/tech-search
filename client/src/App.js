@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Dashboard from "./Components/Dashboard";
 import './App.css';
 import Search from './Components/Search';
 
 class App extends Component {
   render() {
     return (
+
       <div>
       {/* <div className="App">
         <header className="App-header">
