@@ -27,7 +27,7 @@ app.get("*", function (req, res) {
 
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());h
+app.use(bodyParser.json());
 
 
 // For Passport
