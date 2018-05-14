@@ -1,16 +1,61 @@
-import React from 'react';
+import React, { Component } from 'react'
 import "./Search.css";
+import Suggestions from './Suggestions'
+
+import axios from 'axios'
+
+const { API_KEY } = process.env
+
+//UPDATE API
+const API_URL = 'http://api.musicgraph.com/api/v2/artist/suggest'
+
+class Search extends Component {
+  state = {
+    query: '',
+    results: []
+  }
 
 
+  
+  getInfo = () => {
+    axios.get(`${API_URL}?api_key=${API_KEY}&prefix=${this.state.query}&limit=7`)
+      .then(({ data }) => {
+        this.setState({
+          results: data.data
+        })
+      })
+  }
+   
+    handleInputChange = () => {
+      this.setState({
+        query: this.search.value
+      })
+    }
+   
+    render() {
+      return (
+        <form><p>{this.state.query}</p>
+          <input
+            placeholder="Job Title"
+            ref={input => this.search = input}
+            onChange={this.handleInputChange}
+            onKeyUp="getInfo()"
+          />
+            {/* <input
+            placeholder="Location"
+            ref={input => this.search = input}
+            onChange={this.handleInputChange}
+          /> */}
+           <Suggestions results={this.state.results} />
 
 
-const Search = () => (
-    <div>
+<div>
       <a className="active" href="#home">Home</a>
       <a href="#backend">BackEnd</a>
       <a href="#frontend">FrontEnd</a>
       <a href="#fullstack">Full Stack</a>
       <a href="#profile">User Profile</a>
+      <button className="submit" />
      <p> 
       <input type="text" id="myInput" onKeyUp="myFunction()" placeholder="Job Title"/>
       <input type="text" id="myInput" onKeyUp="myFunction()" placeholder="Location"/>
@@ -43,29 +88,10 @@ const Search = () => (
     
     
     </div>
-        );
-    
-    
-    
-    function myFunction() {
-      // Declare variables 
-      var input, filter, table, tr, td, i;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-    
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        } 
-      }
+
+        </form>
+      )
     }
+   }
 
 export default Search;
