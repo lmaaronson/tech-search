@@ -1,6 +1,7 @@
 import React from 'react';
 // import Joblist from "./Joblist";
 import { Joblist, Joblisting } from "../Joblist";
+import { Jobdetail } from "../Jobdetail";
 import "./Dashboard.css";
 
 const Dashboard = props =>
@@ -8,6 +9,7 @@ const Dashboard = props =>
         <h1>Dashboard</h1>
         <button title="search">Search</button>
         <button title="add">Add</button>
+        <div id="app-root">Modal root should be here</div>
         <div>
             <a href="#wishlist">Saved Jobs </a> &nbsp;| &nbsp;<a href="#share_wishlist">Share</a>
             <div id="wishlist">
@@ -27,6 +29,9 @@ const Dashboard = props =>
                     <Joblisting></Joblisting>
                 </Joblist>
             </div>
+
+            <div id="modal-root"></div>
+
             <a href="#appliedjobs">Jobs Applied for </a> &nbsp;| &nbsp; <a href="#share_appliedjobs">Share</a>
             <div id="appliedjobs">
                 <div id="sortlist">Sort by: &nbsp;
