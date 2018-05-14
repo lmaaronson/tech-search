@@ -5,8 +5,10 @@ const passport = require('passport')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const env = require('dotenv').load()
+const apiRoutes = require("./routes/apiRoutes");
 const PORT = process.env.PORT || 3001;
 
+app.use("/api", apiRoutes);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -37,6 +39,7 @@ app.use(passport.session()); // persistent login sessions
 app.get('/', function (req, res) {
   res.send('Welcome to Passport with Sequelize');
 });
+
 
 
 //Models
