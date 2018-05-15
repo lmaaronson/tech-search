@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "./Search.css";
-import Suggestions from './Suggestions'
+// import Suggestions from './Suggestions'
 
 import axios from 'axios'
 
@@ -46,7 +46,7 @@ class Search extends Component {
             ref={input => this.search = input}
             onChange={this.handleInputChange}
           /> */}
-           <Suggestions results={this.state.results} />
+           {/* <Suggestions results={this.state.results} /> */}
 
 
 <div>
