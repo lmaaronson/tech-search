@@ -12,16 +12,16 @@ export const ListItem = props => (
         <Col size="xs-8 sm-9">
           Title: <h3>{props.title}</h3>
           Company Name : <h3>{props.companyName}</h3>
-          <p>
-            Keywords: {props.keywords}
-          </p>
+          
           <a
             rel="noreferrer noopener"
             target="_blank"
             href={props.url}
           >
             Go to Job Link!
-          </a>
+          </a><br></br>
+          <button type="button" class="btn btn-success save">Save job</button>
+         
         </Col>
       </Row>
     </Container>

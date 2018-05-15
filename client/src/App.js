@@ -30,7 +30,7 @@ class App extends Component {
     event.preventDefault();
     API.getJobs(this.state.jobSearch)
       .then(res => {
-        console.log(res);
+        //console.log(res);
         this.setState({ jobs: res.data.listing });
       })
       .catch(err => console.log(err));
