@@ -7,7 +7,7 @@ import Nav from "./Components/Nav";
 import Input from "./Components/Input";
 import Button from "./Components/Button";
 import API from "./utils/API";
-import { List, ListItem }  from "./Components/List";
+import { List, ListItem, ListSaved }  from "./Components/List";
 import { Container, Row, Col } from "./Components/Grid";
 
 class App extends Component {
@@ -70,14 +70,36 @@ class App extends Component {
             </Col>
           </Row>
           <Row>
-            <Col size="xs-12">
+            <Col size="md-6">
             {!this.state.jobs ? (
               <h1 className="text-center">No Jobs to Display</h1>
             ) : (
-              <List>
+              <List><h2>Available Jobs</h2>
                 {this.state.jobs.map(job => {
                   return (
                     <ListItem
+                      key={job.title}
+                      title={job.title}
+                      url={job.url}
+                      keywords={job.keywords}
+                      companyName={job.company.name}
+                      />
+                  );
+                })}
+              </List>
+            )}
+            </Col>
+            <Col size="md-6">
+            {!this.state.jobs ? (
+              <h1 className="text-center">No Saved Jobs</h1>
+            ) : (
+              <List><h2>Saved Jobs</h2>
+                {this.state.jobs.map(job => {
+                  
+                  return (
+                    
+                    <ListSaved
+                    
                       key={job.title}
                       title={job.title}
                       url={job.url}
