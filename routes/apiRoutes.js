@@ -1,31 +1,89 @@
 const axios = require("axios");
 const router = require("express").Router();
 
-// router.get("/searchJobs", (req, res) => {
-//   axios
-//     .get("https://jobs.github.com/positions.json?description=node")
-//     .then(({ data: { results } }) => {res.json(results);
-//         console.log('res', res);})
-//     .catch(err => res.status(422).json(err));
-// });
-
 router.get("/searchJobs", (req, res) => {
+    //console.log(" Server side Query::::: ", req.query);
     axios
-      .get("https://authenticjobs.com/api/?api_key=7aa3eac14c96fe5c4fe58dc504d956e0&method=aj.jobs.search&keywords=Node&format=json", { params: req.query })
+      .get(`https://authenticjobs.com/api/?api_key=7aa3eac14c96fe5c4fe58dc504d956e0&method=aj.jobs.search&keywords=${req.query.q}&format=json`)
       .then(({ data: { listings } }) => {
+          //console.log("response ::: ", listings);
           res.json(listings);
-          console.log("id : " + listings.listing[0].id);
-          console.log("title : " + listings.listing[0].title);
-          console.log("desc : " + listings.listing[0].description);
-          console.log("post_date : " + listings.listing[0].post_date);
-          console.log("company_name : " + listings.listing[0].company.name);
-          console.log("city : " + listings.listing[0].company.location.city);
-          console.log("state : " + listings.listing[0].company.location.state);    
-          console.log("keywords : " + listings.listing[0].keywords);
-          console.log("apply url : " + listings.listing[0].apply_url);
-          console.log("url : " + listings.listing[0].url);
       })
       .catch(err => res.status(422).json(err));
+  });
+  // Save job
+router.post("/searchJobs/save/:id", function (req, res) {
+    // Use the article id to find and update its saved boolean
+    Job.findOneAndUpdate({ "_id": req.params.id }, { "saved": true })
+      // Execute the above query
+      .exec(function (err, doc) {
+        // Log any errors
+        if (err) {
+          console.log(err);
+        }
+        else {
+          // Or send the document to the browser
+          res.send(doc);
+        }
+      });
+  });
+  // Create a new Task
+router.post("/Tasks/save/:id", function (req, res) {
+    // Create a new Task and pass the req.body to the entry
+    var newTask = new Task({
+      body: req.body.text,
+      article: req.params.id
+    });
+    console.log(req.body)
+    // And save the new Task the db
+    newTask.save(function (error, Task) {
+      // Log any errors
+      if (error) {
+        console.log(error);
+      }
+      // Otherwise
+      else {
+        // Use the article id to find and update it's Tasks
+        Article.findOneAndUpdate({ "_id": req.params.id }, { $push: { "Tasks": Task } })
+          // Execute the above query
+          .exec(function (err) {
+            // Log any errors
+            if (err) {
+              console.log(err);
+              res.send(err);
+            }
+            else {
+              // Or send the Task to the browser
+              res.send(Task);
+            }
+          });
+      }
+    });
+  });
+  // Delete a Task
+router.delete("/Tasks/delete/:Task_id/:article_id", function (req, res) {
+    // Use the Task id to find and delete it
+    Task.findOneAndRemove({ "_id": req.params.Task_id }, function (err) {
+      // Log any errors
+      if (err) {
+        console.log(err);
+        res.send(err);
+      }
+      else {
+        Job.findOneAndUpdate({ "_id": req.params.Job_id }, { $pull: { "Tasks": req.params.Task_id } })
+          // Execute the above query
+          .exec(function (err) {
+            // Log any errors
+            if (err) {
+              console.log(err);
+              res.send(err);
+            }
+            else {
+              // Or send the Task to the browser
+              res.send("Task Deleted");
+            }
+          });
+      }
   });
 
 
