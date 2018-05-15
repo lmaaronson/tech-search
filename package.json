@@ -14,11 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-<<<<<<< HEAD
-=======
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
->>>>>>> ab8b5886e85696da65dedaf082455a05f5d56c6b
     "concurrently": "^3.5.1",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
