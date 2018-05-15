@@ -11,6 +11,17 @@ import { List, ListItem }  from "./Components/List";
 import { Container, Row, Col } from "./Components/Grid";
 
 class App extends Component {
+
+
+  // constructor() {
+  //   super();
+  //   document.addEventListener('DOMContentLoaded', function() {
+  //     var elems = document.querySelectorAll('.modal');
+  //     var instances = M.Modal.init(elems, options);
+  //   });
+  // }
+  // instance = M.Modal.getInstance(elem);
+=======
   state = {
     jobs: [],
     jobSearch: ""
@@ -36,9 +47,14 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
+
   render() {
     return (
       <div>
+
+      <Search />
+      <Dashboard />
+=======
         <Nav />
         <Jumbotron />
         <Container>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 // import Joblist from "./Joblist";
 import { Joblist, Joblisting } from "../Joblist";
 import { Jobdetail } from "../Jobdetail";
@@ -9,7 +10,6 @@ const Dashboard = props =>
         <h1>Dashboard</h1>
         <button title="search">Search</button>
         <button title="add">Add</button>
-        <div id="app-root">Modal root should be here</div>
         <div>
             <a href="#wishlist">Saved Jobs </a> &nbsp;| &nbsp;<a href="#share_wishlist">Share</a>
             <div id="wishlist">
@@ -20,14 +20,25 @@ const Dashboard = props =>
                     <button id="employersort">Employer</button>
                 </div>
                 <Joblist>
-                    <Joblisting></Joblisting>
+                    <Joblisting />
                 </Joblist>
-                <Joblist>
-                    <Joblisting></Joblisting>
-                </Joblist>
-                <Joblist>
-                    <Joblisting></Joblisting>
-                </Joblist>
+
+                {/* {this.state.Jobs.length ? (
+              <Joblist>
+                {this.state.Jobs.map(Job => (
+                  <Joblisting key={Job._id}>
+                    <Link to={"/Jobs/" + Job._id}>
+                      <strong>
+                        {Job.title} by {Job.author}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => this.deleteJob(Job._id)} />
+                  </Joblisting>
+                ))}
+              </Joblist>
+            ) : (
+              <h3>No Results to Display</h3>
+            )} */}
             </div>
 
             <div id="modal-root"></div>

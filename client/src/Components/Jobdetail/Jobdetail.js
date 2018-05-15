@@ -1,98 +1,47 @@
 import React from 'react';
-// import React, { Component } from "react";
-import ReactDOM from 'react-dom'
 
-// These two containers are siblings in the DOM
-const appRoot = document.getElementById('app-root');
-const modalRoot = document.getElementById('modal-root');
-
-// Let's create a Modal component that is an abstraction around
-// the portal API.
-class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-    // Create a div that we'll render the modal into. Because each
-    // Modal component has its own element, we can render multiple
-    // modal components into the modal container.
-    this.el = document.createElement('div');
-  }
-
-  componentDidMount() {
-    // Append the element into the DOM on mount. We'll render
-    // into the modal container element (see the HTML tab).
-    modalRoot.appendChild(this.el);
-  }
-
-  componentWillUnmount() {
-    // Remove the element from the DOM when we unmount
-    modalRoot.removeChild(this.el);
-  }
-  
-  render() {
-    // Use a portal to render the children into the element
-    return ReactDOM.createPortal(
-      // Any valid React child: JSX, strings, arrays, etc.
-      this.props.children,
-      // A DOM element
-      this.el,
-    );
-  }
-}
-
-// The Modal component is a normal React component, so we can
-// render it wherever we like without needing to know that it's
-// implemented with portals.
 class Jobdetail extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {showModal: false};
-    
-    this.handleShow = this.handleShow.bind(this);
-    this.handleHide = this.handleHide.bind(this);
-  }
 
-  handleShow() {
-    this.setState({showModal: true});
-  }
-  
-  handleHide() {
-    this.setState({showModal: false});
-  }
+  // const Jobdetail = props =>
+  constructor() {
+    super();
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.modal');
+      // var instances = M.Modal.init(elems, options);
+    })
+  };
 
   render() {
-    // Show a Modal on click.
-    // (In a real app, don't forget to use ARIA attributes
-    // for accessibility!)
-    const modal = this.state.showModal ? (
-      <Modal>
-        <div className="modal">
-          <div>
-            With a portal, we can render content into a different
-            part of the DOM, as if it were any other React child.
-          </div>
-          This is being rendered inside the #modal-container div.
-          <button onClick={this.handleHide}>Hide modal</button>
-        </div>
-      </Modal>
-    ) : null;
-
     return (
-      <div className="app">
-        This div has overflow: hidden.
-        <button onClick={this.handleShow}>Show modal</button>
-        {modal}
+      <div>
+        {/* Modal Trigger
+        <a className="waves-effect waves-light btn modal-trigger" href="#modal1">Modal Link</a> */}
+        {/* Modal Structure */}
+        {/* <div id="modal1" className="modal"> */}
+        <div id="modal1">
+          <div className="modal-content">
+            <h4 id="title">Full Stack Web Developer</h4>
+            <a href="company_url"><p id="company_name"><strong>Big huge company</strong></p></a>
+            <p id="company_city">In a big city<span id="company_state">NY</span></p>
+            <p><i>Date posted:<span id="post_date">Jan. 1, 2000</span></i></p>
+            <p id="description">With a long description of the job and its requirements, how to apply and so forth.</p>
+          </div>
+          <div className="modal-footer">
+            <a href="#!" className="modal-close waves-effect waves-green btn-flat">Apply</a>
+            title: 
+description
+post_date: 
+company_name: 
+company_city:    
+company_state:  
+  apply_url:
+  company_url: 
+keywords:
+          </div>
+        </div>
       </div>
-    );
-  }
-}
+    )
+  };
+};
 
-// ReactDOM.render(<App />, appRoot);
-// ReactDOM.render(Jobdetail);
 export default Jobdetail;
-// export default (<Jobdetail />, appRoot);
-// export default (Jobdetail, <App />, appRoot);
-// ReactDOM.render(<Jobdetail />, appRoot);
-// export default Jobdetail(appRoot);
-// export default Jobdetail (<App />, appRoot);
-// export default (<App />, appRoot);
-
