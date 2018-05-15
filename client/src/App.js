@@ -4,21 +4,22 @@ import './App.css';
 import Search from './Components/Search';
 
 class App extends Component {
+
+  // constructor() {
+  //   super();
+  //   document.addEventListener('DOMContentLoaded', function() {
+  //     var elems = document.querySelectorAll('.modal');
+  //     var instances = M.Modal.init(elems, options);
+  //   });
+  // }
+  // instance = M.Modal.getInstance(elem);
+
   render() {
     return (
 
       <div>
-      {/* <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div> */}
       <Search />
+      <Dashboard />
       </div>
     );
   }
