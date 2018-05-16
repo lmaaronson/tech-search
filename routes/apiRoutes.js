@@ -37,7 +37,7 @@ router.post("/searchJobs/saved", function (req, res) {
     });
   });
 
-
+// new comment for commit and add
 // get all saved jobs job
 router.get("/searchJobs/saved", function (req, res) {
   // Use the article id to find and update its saved boolean
