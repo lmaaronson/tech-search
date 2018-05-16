@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
@@ -26,6 +27,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "sequelize": "^4.37.7"
+    "sequelize": "^4.37.7",
+    "upwork-api": "^1.2.4"
   }
 }
