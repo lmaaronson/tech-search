@@ -13,8 +13,7 @@ export const SearchItem = props => (
                     <a href={props.url}>Link</a>
                 </Col>
                 <Col size = "md-4">
-                    <RemoveBtn onClick={props.add} />
-                    <AddBtn />
+                    <AddBtn onClick={props.add} />
                 </Col>
             </Row>
         </Container>

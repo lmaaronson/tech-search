@@ -31,8 +31,8 @@ class Search extends Component {
             .catch(err => console.log(err));
     };
 
-    addJob = (id) => {
-        API.AddJob(id)
+    addJob = (obj) => {
+        API.addJob(obj)
         .then(res =>{
             //remove this listing? or update the list to remove all saved jobs?
         })
@@ -83,7 +83,21 @@ class Search extends Component {
                                                     url={job.url}
                                                     keywords={job.keywords}
                                                     companyName={job.company.name}
-                                                    add={() => this.addJob(job.id)}
+                                                    add={() => this.addJob(
+                                                        {
+                                                            id: job.id,
+                                                            title: job.title,
+                                                            description: job.description,
+                                                            post_date: job.post_date,
+                                                            company_name: job.company.name,
+                                                            company_city: job.company.city,
+                                                            company_state: job.company.state,
+                                                            keywords: job.keywords,
+                                                            apply_url: job.url,
+                                                            company_url: job.company.url
+                                                        }                                            
+                                                    
+                                                    )}
                                                     />
                                             );
                                         })}
