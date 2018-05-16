@@ -7,15 +7,16 @@ import Nav from "./Components/Nav";
 import Input from "./Components/Input";
 import Button from "./Components/Button";
 import API from "./utils/API";
-import { List, ListItem, ListSaved }  from "./Components/List";
+import { List, ListItem, ListSaved } from "./Components/List";
 import { Container, Row, Col } from "./Components/Grid";
 
 class App extends Component {
   state = {
     jobs: [],
+    savedJobs: [],
     jobSearch: ""
   };
- 
+
   handleInputChange = event => {
     // Destructure the name and value properties off of event.target
     // Update the appropriate state
@@ -36,87 +37,113 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  render() {
-    return (
-      <div>
-        <Nav />
-        <Jumbotron />
-        <Container>
-          <Row>
-            <Col size="md-12">
-              <form>
-                <Container>
-                  <Row>
-                    <Col size="xs-9 sm-10">
-                      <Input
-                        name="jobSearch"
-                        value={this.state.jobSearch}
-                        onChange={this.handleInputChange}
-                        placeholder="Search For a Job"
-                      />
-                    </Col>
-                    <Col size="xs-3 sm-2">
-                      <Button
-                        onClick={this.handleFormSubmit}
-                        type="success"
-                        className="input-lg"
-                      >
-                        Search
-                      </Button>
-                    </Col>
-                  </Row>
-                </Container>
-              </form>
-            </Col>
-          </Row>
-          <Row>
-            <Col size="md-6">
-            {!this.state.jobs ? (
-              <h1 className="text-center">No Jobs to Display</h1>
-            ) : (
-              <List><h2>Available Jobs</h2>
-                {this.state.jobs.map(job => {
-                  return (
-                    <ListItem
-                      key={job.title}
-                      title={job.title}
-                      url={job.url}
-                      keywords={job.keywords}
-                      companyName={job.company.name}
-                      />
-                  );
-                })}
-              </List>
-            )}
-            </Col>
-            <Col size="md-6">
-            {!this.state.jobs ? (
-              <h1 className="text-center">No Saved Jobs</h1>
-            ) : (
-              <List><h2>Saved Jobs</h2>
-                {this.state.jobs.map(job => {
-                  
-                  return (
-                    
-                    <ListSaved
-                    
-                      key={job.title}
-                      title={job.title}
-                      url={job.url}
-                      keywords={job.keywords}
-                      companyName={job.company.name}
-                      />
-                  );
-                })}
-              </List>
-            )}
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
-  }
-}
+  // from solved Books app
+  loadSavedJobs = () => {
+    API.getSavedJobs()
+      .then(res =>
+        // this.setState({ jobs: res.data, title: "", url: "", companyName: "", keywords: "" })
+        this.setState({ savedJobs: res.data.listing })
+      )
+      .catch(err => console.log(err));
+  };
 
-export default App;
-  
+  deleteJob = id => {
+    API.deleteJob(id)
+      .then(res => this.loadSavedJobs())
+      .catch(err => console.log(err));
+  };
+
+  // job search button function
+  handleAddJob = event => {
+    // When the form is submitted, prevent its default behavior, get new jobs, update the recipes state
+    event.preventDefault();
+    API.getSavedJobs(this.state.savedJobs)
+      .then(res => {
+        //console.log(res);
+        this.setState({ savedJobs: res.data.listing });
+      })
+      .catch(err => console.log(err));
+    };
+
+    render() {
+      return (
+        <div>
+          <Nav />
+          <Jumbotron />
+          <Container>
+            <Row>
+              <Col size="md-12">
+                <form>
+                  <Container>
+                    <Row>
+                      <Col size="xs-9 sm-10">
+                        <Input
+                          name="jobSearch"
+                          value={this.state.jobSearch}
+                          onChange={this.handleInputChange}
+                          placeholder="Search For a Job"
+                        />
+                      </Col>
+                      <Col size="xs-3 sm-2">
+                        <Button
+                          onClick={this.handleFormSubmit}
+                          type="success"
+                          className="input-lg"
+                        >
+                          Search
+                      </Button>
+                      </Col>
+                    </Row>
+                  </Container>
+                </form>
+              </Col>
+            </Row>
+            <Row>
+              <Col size="md-6 sm-12">
+                {!this.state.jobs ? (
+                  <h1 className="text-center">No Jobs to Display</h1>
+                ) : (
+                    <List><h2>Available Jobs</h2>
+                      {this.state.jobs.map(job => {
+                        return (
+                          <ListItem
+                            key={job.title}
+                            title={job.title}
+                            url={job.url}
+                            keywords={job.keywords}
+                            companyName={job.company.name}
+                          />
+                        );
+                      })}
+                    </List>
+                  )}
+              </Col>
+              <Col size="md-6 sm-12">
+                {/* {!this.state.savedJobs.length ? ( */}
+                {!this.state.jobs ? (
+                  <h1 className="text-center">No Saved Jobs</h1>
+                ) : (
+                    <List><h2>Saved Jobs</h2>
+                      {/* {this.state.savedJobs.map(job => { */}
+                      {this.state.jobs.map(job => {
+                        return (
+                          <ListSaved
+                            key={job.title}
+                            title={job.title}
+                            url={job.url}
+                            keywords={job.keywords}
+                            companyName={job.company.name}
+                          />
+                        );
+                      })}
+                    </List>
+                  )}
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    }
+  }
+
+  export default App;
