@@ -18,16 +18,17 @@ export const SearchItem = props => (
                     <RemoveBtn onClick={props.add} />
                     <AddBtn />
                     <div class="btn-group">
-  <button type="button" class="btn btn-danger">Action</button>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Tasks
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Tasks</a>
+    <a class="dropdown-item" href="#">More stuff</a>
     <a class="dropdown-item" href="#">Details</a>
     <a class="dropdown-item" href="#">Add Comment</a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Update Status</a>
+    <a class="dropdown-item" href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Show More about Job
+</button></a>
   </div>
 </div>
 
