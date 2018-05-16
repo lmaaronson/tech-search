@@ -33,8 +33,6 @@ router.post("/searchJobs/saved", function (req, res) {
       "apply_url": req.params.apply_url,
       "company_url": req.params.company_url,
     }, 
-  
-    
     {
       "saved": true
     })
