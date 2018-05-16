@@ -21,9 +21,21 @@ router.get("/searchJobs", (req, res) => {
 // Save job
 router.post("/searchJobs/saved", function (req, res) {
   // Use the article id to find and update its saved boolean
-  Job.findOneAndUpdate({
-      "_id": req.params.id
-    }, {
+  console.log(req)
+  Job.create({
+      "_id": req.params.id, 
+      "title": req.params.title,
+      "description": req.params.description,
+      "post_date": req.params.post_date,
+      "company_name": req.params.company_name,
+      "company_city": req.params.company_city,
+      "keywords": req.params.keywords,
+      "apply_url": req.params.apply_url,
+      "company_url": req.params.company_url,
+    }, 
+  
+    
+    {
       "saved": true
     })
     // Execute the above query

@@ -6,7 +6,7 @@ export default {
   getJobs: function(query) {
     return axios.get("/api/searchJobs", { params: { q: query } });
   },
-  addJob: function(id) {
-    return axios.get("/api/addJob", { params: { q: id } });
+  addJob: function(obj) {
+    return axios.post("/api/searchJobs/saved", { params: obj});
   }
 };
