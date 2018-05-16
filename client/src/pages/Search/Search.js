@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-//import RemoveBtn from "../../components/RemoveBtn";
-//import AddBtn from "../../components/AddBtn";
-//import Jumbotron from "../../components/Jumbotron";
+
+//import RemoveBtn from "../../Components/RemoveBtn";
+import AddBtn from "../../Components/AddBtn";
+import Jumbotron from "../../Components/Jumbotron";
 import API from "../../utils/API";
-import { Col, Row, Container } from "../../components/Grid";
-import { List, SearchItem } from "../../components/List";
-import { Input, FormBtn } from "../../components/Form";
+import { Col, Row, Container } from "../../Components/Grid";
+import { List, ListItem, SearchItem } from "../../Components/List";
+import { Input, FormBtn } from "../../Components/Form";
+
 
 class Search extends Component {
     state = {
