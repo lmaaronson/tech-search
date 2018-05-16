@@ -47,11 +47,8 @@ class Saved extends Component {
                 <br />
                 <Container>
                     <Row>
-                        <Col size="md-12">
-                            <form>
-                                <Container>
-                                    {/* <Row>
-                                        <Col size="xs-9 sm-10">
+                        <h1> [PROFANITIES] </h1>
+                        <Col size="xs-9 sm-10">
                                             <Input
                                                 name="jobSearch"
                                                 value={this.state.jobSearch}
@@ -65,12 +62,9 @@ class Saved extends Component {
                                                 type="success"
                                                 className="input-lg">
                                                 Search
-                                                </FormBtn>
+                                            </FormBtn>
                                         </Col>
-                                    </Row> */}
-                                </Container>
-                            </form>
-                        </Col>
+
                     </Row>
                     <Row>
                         <Col size="md-12">
@@ -80,6 +74,7 @@ class Saved extends Component {
                                     <List>
                                         {this.state.jobs.map(job => {
                                             return (
+                                                <div>
                                                 <SearchItem
                                                     key={job.id}
                                                     title={job.title}
@@ -88,6 +83,10 @@ class Saved extends Component {
                                                     companyName={job.company.name}
                                                     add={() => this.addJob(job.id)}
                                                 />
+
+</div>
+                                                
+
                                             );
                                         })}
                                     </List>
