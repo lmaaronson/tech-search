@@ -9,7 +9,8 @@ import { List, ListItem, SearchItem } from "../../Components/List";
 import { Input, FormBtn } from "../../Components/Form";
 
 
-class Search extends Component {
+class Saved extends Component {
+
     state = {
         jobs: [],
         jobSearch: ""
@@ -35,9 +36,9 @@ class Search extends Component {
 
     addJob = (id) => {
         API.AddJob(id)
-        .then(res =>{
-            //remove this listing? or update the list to remove all saved jobs?
-        })
+            .then(res => {
+                //remove this listing? or update the list to remove all saved jobs?
+            })
     }
 
     render() {
@@ -49,7 +50,7 @@ class Search extends Component {
                         <Col size="md-12">
                             <form>
                                 <Container>
-                                    <Row>
+                                    {/* <Row>
                                         <Col size="xs-9 sm-10">
                                             <Input
                                                 name="jobSearch"
@@ -64,9 +65,9 @@ class Search extends Component {
                                                 type="success"
                                                 className="input-lg">
                                                 Search
-                                            </FormBtn>
+                                                </FormBtn>
                                         </Col>
-                                    </Row>
+                                    </Row> */}
                                 </Container>
                             </form>
                         </Col>
@@ -86,7 +87,7 @@ class Search extends Component {
                                                     keywords={job.keywords}
                                                     companyName={job.company.name}
                                                     add={() => this.addJob(job.id)}
-                                                    />
+                                                />
                                             );
                                         })}
                                     </List>
@@ -100,4 +101,4 @@ class Search extends Component {
 }
 
 
-export default Search;
+export default Saved;
