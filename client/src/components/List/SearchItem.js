@@ -15,7 +15,10 @@ export const SearchItem = props => (
                     <a href={props.url}>Link</a>
                 </Col>
                 <Col size = "md-4">
+
+                {/* NOTE FOR BACKEND:  ONLY ONE BUTTON SHOULD BE VISIBLE AT A TIME */}
                     <RemoveBtn onClick={props.add} />
+                    
                     <AddBtn />
                     <div class="btn-group">
   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
